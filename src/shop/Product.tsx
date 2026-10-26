@@ -44,14 +44,14 @@ function ProductView({ p }: { p: Product }) {
     <div className="container">
       <div className="crumbs"><Link to="/">{tr("Home", "首页")}</Link> / <Link to={`/shop?cat=${p.category}`}>{catLabel(p.category)}</Link> / {pick(p, "name")}</div>
       <div className="pdp">
-        <div className="gallery">
-          <div className="thumbs">
+        <div className={`gallery ${views <= 1 ? "single" : ""}`}>
+          {views > 1 && <div className="thumbs">
             {Array.from({ length: views }, (_, i) => (
               <button key={i} className={img === i ? "on" : ""} onClick={() => setImg(i)} aria-label={tr(`View ${i + 1}`, `图 ${i + 1}`)}>
                 <ProductImage p={p} index={p.images.length ? i : 0} colorHex={viewHex(i)} />
               </button>
             ))}
-          </div>
+          </div>}
           <div className="main-img"><ProductImage p={p} index={p.images.length ? img : 0} colorHex={viewHex(img)} /></div>
         </div>
 

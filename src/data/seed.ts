@@ -67,7 +67,7 @@ export const seedProducts: Product[] = seeds.map(({ age, ...s }) => ({
   tags: s.tags ?? [],
   isNew: s.isNew ?? false,
   isBest: s.isBest ?? false,
-  images: [],
+  images: [`/images/products/${s.id}.jpg`],
   status: "active",
   createdAt: ago(age),
   zh: ZH_P[s.id],

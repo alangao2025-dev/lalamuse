@@ -416,3 +416,4 @@ html[lang="zh-CN"] .serif-i { font-style: normal; color: var(--rose-deep); }
 html[lang="zh-CN"] .eyebrow, html[lang="zh-CN"] .nav, html[lang="zh-CN"] .btn { letter-spacing: .12em; }
 html[lang="zh-CN"] .hero h1 { font-size: clamp(40px, 5.6vw, 76px); }
 html[lang="zh-CN"] .article-body p:first-child::first-letter { font-size: inherit; float: none; padding: 0; color: inherit; font-family: inherit; }
+.gallery.single { grid-template-columns: 1fr; }

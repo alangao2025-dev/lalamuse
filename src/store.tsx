@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 import type { State } from "./types";
 import { seedState } from "./data/seed";
 
-const KEY = "lalamuse-v2";
+const KEY = "lalamuse-v3";
 
 function load(): State {
   try {
