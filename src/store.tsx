@@ -2,12 +2,16 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 import type { State } from "./types";
 import { seedState } from "./data/seed";
 
-const KEY = "lalamuse-v1";
+const KEY = "lalamuse-v2";
 
 function load(): State {
   try {
     const raw = localStorage.getItem(KEY);
-    if (raw) return { ...seedState(), ...JSON.parse(raw) };
+    if (raw) {
+      const seed = seedState();
+      const saved = JSON.parse(raw) as Partial<State>;
+      return { ...seed, ...saved, settings: { ...seed.settings, ...saved.settings, zh: { ...seed.settings.zh, ...saved.settings?.zh } } };
+    }
   } catch { /* corrupted storage falls back to seed */ }
   return seedState();
 }

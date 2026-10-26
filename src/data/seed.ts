@@ -42,6 +42,26 @@ const seeds: Seed[] = [
   { id: "p17", name: "Gigi Cat-Eye Sunglasses", category: "accessories", kind: "sunglasses", price: 62, stock: 38, colors: [C.black, C.rose], sizes: ["One size"], description: "Retro cat-eye frames with UV400 gradient lenses.", material: "Acetate · UV400", sold: 177, isBest: true, tags: ["summer"], age: 28 },
 ];
 
+const ZH_P: Record<string, Product["zh"]> = {
+  p1: { name: "卡米尔真丝吊带裙", description: "水洗桑蚕丝斜裁吊带裙，轻贴身形、走动时垂坠灵动。可调节肩带，柔和的垂坠领口。", material: "100% 桑蚕丝 · 干洗或冷水手洗" },
+  p2: { name: "埃洛蒂泡泡袖衬衫", description: "浪漫泡泡袖、精致方领与包扣设计。塞进牛仔裤或缎面半裙都好看。", material: "棉质巴里纱混纺 · 冷水机洗" },
+  p3: { name: "玛戈缎面中长半裙", description: "垂顺的缎面中长裙，后腰隐形松紧。从白天到夜晚的必备单品。", material: "再生缎面 · 冷水手洗" },
+  p4: { name: "圣日耳曼羊毛大衣", description: "宽松双排扣大衣，柔软羊毛混纺，落肩剪裁，深口袋。", material: "70% 羊毛，30% 再生锦纶 · 干洗" },
+  p5: { name: "芭蕾尖头平底鞋", description: "柔软纳帕羊皮尖头平底鞋，缓震鞋垫，全天舒适。", material: "纳帕皮 · 真皮内里" },
+  p6: { name: "奥黛特后空中跟鞋", description: "6 厘米猫跟后空鞋，柔和方头，优雅又真正好走。", material: "漆皮 · 6 厘米跟高" },
+  p7: { name: "朱丽叶短靴", description: "利落短靴，叠层粗跟，侧拉链设计。", material: "麂皮鞋面 · 橡胶鞋底" },
+  p8: { name: "里维埃拉编织托特包", description: "手工编织大容量托特包，皮革提手——从市集到海边。", material: "拉菲草 & 皮革" },
+  p9: { name: "月光迷你手提包", description: "硬挺迷你包，新月形提手，附可拆卸链条肩带。", material: "颗粒皮 · 金色五金" },
+  p10: { name: "晚宴珍珠手拿包", description: "缎面手拿包配仿珍珠搭扣，为难忘的夜晚而生。", material: "缎面 · 仿珍珠" },
+  p11: { name: "珍珠吊坠耳环", description: "淡水珍珠悬挂于纤细的 18K 镀金耳圈。", material: "18K 镀金纯银 · 淡水珍珠" },
+  p12: { name: "星光叠戴项链", description: "两条精致细链配小星星吊坠，预先叠好，永不缠绕。", material: "18K 镀金 · 低致敏" },
+  p13: { name: "晨曦叠戴戒指套装", description: "三枚细戒：素圈、麻花与一颗小锆石。", material: "镀金纯银 · 立方氧化锆" },
+  p14: { name: "温蒂妮链条手链", description: "流动感人字链手链，闪耀光泽。", material: "18K 镀金黄铜" },
+  p15: { name: "花语真丝方巾", description: "印花真丝斜纹方巾——系发、挂包或围在颈间。", material: "100% 真丝斜纹 · 70×70cm" },
+  p16: { name: "蔚蓝海岸草编帽", description: "宽檐草编帽，罗缎丝带装饰。", material: "纸草 · 罗缎" },
+  p17: { name: "琪琪猫眼墨镜", description: "复古猫眼镜框，UV400 渐变镜片。", material: "板材 · UV400" },
+};
+
 export const seedProducts: Product[] = seeds.map(({ age, ...s }) => ({
   ...s,
   tags: s.tags ?? [],
@@ -50,7 +70,23 @@ export const seedProducts: Product[] = seeds.map(({ age, ...s }) => ({
   images: [],
   status: "active",
   createdAt: ago(age),
+  zh: ZH_P[s.id],
 }));
+
+const ZH_A: Record<string, Post["zh"]> = {
+  a1: { title: "巴黎胶囊衣橱：10 件单品，30 套穿搭", excerpt: "如何打造一个小而美、每天都能穿的衣橱——少买一点，多穿一点。",
+    body: "法式随性风格的秘诀不是更大的衣柜，而是更小、更用心挑选的衣柜。\n\n## 从中性色打底\n选两三种你喜欢的基础色——象牙白、驼色和黑色永不过时——围绕它们搭建衣橱。每件单品都应能和至少三件其他单品搭配。\n\n## 投资面料\n一条真丝吊带裙、一件羊毛大衣和一双皮质平底鞋，能比十件潮流单品穿得更久。买之前摸一摸面料，品质是摸得出来的。\n\n## 加一个浪漫细节\n泡泡袖、一颗珍珠、一条丝巾。每套穿搭一个柔美细节，女人味十足又不显刻意。\n\n## 这 10 件单品\n吊带裙、泡泡袖衬衫、缎面中长裙、直筒牛仔裤、羊毛大衣、尖头平底鞋、后空高跟鞋、编织托特包、珍珠耳环、真丝方巾。" },
+  a2: { title: "一条吊带裙，三种穿法", excerpt: "日常、通勤、晚宴——看一条真丝吊带裙如何用几件配饰切换风格。",
+    body: "在这支 60 秒的穿搭视频里，我们带着卡米尔真丝吊带裙从早午餐走到晚餐。\n\n## 造型 1 — 周末\n内搭白 T，配平底鞋和编织托特包。\n\n## 造型 2 — 通勤\n外搭羊毛大衣，换上后空高跟鞋。\n\n## 造型 3 — 晚宴\n珍珠耳环、缎面手拿包，再加一抹红唇。" },
+  a3: { title: "秋季趋势报告：柔和剪裁与暖调中性色", excerpt: "驼色、巧克力色和奶油色回归——教你穿出本季最温柔的趋势。",
+    body: "这一季的剪裁变得松弛：落肩、垂坠长裤和能把自己裹起来的大衣。\n\n## 暖调中性色\n驼色、焦糖、奶油与可可色，同色系叠穿。\n\n## 质感就是一切\n麂皮靴配缎面裙，再加一件粗针毛衣，不靠颜色也有层次。" },
+  a4: { title: "夏日婚礼穿什么", excerpt: "优雅、舒适、又不会抢新娘风头的完美宾客穿搭。",
+    body: "夏日婚礼适合透气面料和柔和色彩。\n\n## 选一个粉彩色\n雾霾蓝、丁香紫和鼠尾草绿上镜好看，清新自然。\n\n## 舒适的鞋跟\n猫跟或粗跟，让你从仪式一路跳到舞池。\n\n## 以珍珠收尾\n珍珠耳环和缎面手拿包永远得体。" },
+  a5: { title: "丝巾的 5 种系法", excerpt: "发带、领结、包挂……一个全年都用得上的快速教程。",
+    body: "一条真丝方巾是你能拥有的最百搭的配饰。暂停视频，跟着一起系。\n\n## 本期单品\n花语真丝方巾，70×70cm。" },
+  a6: { title: "镀金首饰如何保养", excerpt: "几个简单习惯，让你的首饰闪耀多年。",
+    body: "镀金层很娇贵，但稍加呵护就能长久。\n\n## 最后戴上，最先摘下\n喷完香水、擦完乳液再戴首饰；游泳或运动前摘下。\n\n## 分开收纳\n每件首饰单独放入收纳袋，避免刮花和缠绕。" },
+};
 
 export const seedPosts: Post[] = [
   {
@@ -128,7 +164,7 @@ export const seedOrders: Order[] = statuses.map((status, i) => {
 export function seedState(): State {
   return {
     products: seedProducts,
-    posts: seedPosts,
+    posts: seedPosts.map((p) => ({ ...p, zh: ZH_A[p.id] })),
     orders: seedOrders,
     customers: seedCustomers,
     settings: {
@@ -141,6 +177,13 @@ export function seedState(): State {
       coupons: [{ code: "BLOOM10", percent: 10 }, { code: "MUSE15", percent: 15 }],
       heroTitle: "Soft Romance, Everyday",
       heroSubtitle: "The new season edit — silk, pearls and quiet elegance.",
+      zh: {
+        announcement: "订单满 $79 全球免运费 · 首单使用优惠码 BLOOM10 立享 9 折",
+        heroTitle: "温柔浪漫，日日可穿",
+        heroSubtitle: "新季精选——真丝、珍珠与安静的优雅。",
+        lookTitle: "里维埃拉的周末",
+        lookSubtitle: "一键购齐整套造型",
+      },
       look: { id: "look1", title: "The Riviera Weekend", subtitle: "Shop the complete look", palette: ["#F3E3DC", "#E9C4BE"], productIds: ["p2", "p3", "p8", "p17"] },
     },
     cart: [],

@@ -27,6 +27,7 @@ export interface Product {
   status: "active" | "draft" | "archived";
   sold: number;
   createdAt: string;
+  zh?: { name?: string; description?: string; material?: string };
 }
 
 export type PostColumn = "Styling Tips" | "Trend Report" | "Capsule Wardrobe" | "Occasion Wear" | "Care Guide";
@@ -48,6 +49,7 @@ export interface Post {
   publishedAt: string;
   author: string;
   views: number;
+  zh?: { title?: string; excerpt?: string; body?: string };
 }
 
 export interface CartItem { productId: string; qty: number; color: string; size: string }
@@ -96,6 +98,7 @@ export interface Settings {
   heroTitle: string;
   heroSubtitle: string;
   look: Look;
+  zh: { announcement: string; heroTitle: string; heroSubtitle: string; lookTitle: string; lookSubtitle: string };
 }
 
 export interface State {

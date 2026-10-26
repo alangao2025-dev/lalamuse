@@ -392,3 +392,27 @@ details.acc p { margin: 0 0 18px; color: var(--ink-2); font-size: 14px; }
 
 .shop-layout .grid { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 760px) { .shop-layout .grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* language */
+.lang-switch { display: inline-flex; align-items: center; gap: 2px; height: 36px; padding: 0 4px 0 10px; border-radius: 999px; background: var(--paper); box-shadow: inset 0 0 0 1px var(--blush-2); color: var(--rose-deep); margin-right: 4px; align-self: center; }
+.lang-switch svg { margin-right: 4px; flex: none; }
+.lang-switch button { height: 28px; min-width: 38px; padding: 0 9px; border-radius: 999px; font-size: 12px; letter-spacing: .06em; color: var(--ink-2); transition: .2s; }
+.lang-switch button.on { background: var(--ink); color: #fff; }
+.menu-lang { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.menu-search { display: flex; align-items: center; gap: 10px; height: 46px; margin: 14px 0 4px; padding: 0 16px; border-radius: 999px; background: var(--cream); color: var(--muted); }
+.menu-search input { flex: 1; border: 0; background: transparent; outline: none; min-width: 0; color: var(--ink); }
+@media (max-width: 760px) {
+  .lang-switch { height: 32px; padding-left: 8px; margin-right: 0; }
+  .lang-switch svg { display: none; }
+  .lang-switch button { min-width: 0; padding: 0 8px; font-size: 11.5px; height: 26px; }
+  .logo { font-size: 21px; }
+}
+@media (max-width: 400px) { .header-actions .hide-xs { display: none; } }
+
+/* Chinese typography */
+html[lang="zh-CN"] { --serif: "Cormorant Garamond", "Noto Serif SC", "Songti SC", serif; --sans: "Jost", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; }
+html[lang="zh-CN"] h1, html[lang="zh-CN"] h2, html[lang="zh-CN"] h3 { letter-spacing: .04em; line-height: 1.3; }
+html[lang="zh-CN"] .serif-i { font-style: normal; color: var(--rose-deep); }
+html[lang="zh-CN"] .eyebrow, html[lang="zh-CN"] .nav, html[lang="zh-CN"] .btn { letter-spacing: .12em; }
+html[lang="zh-CN"] .hero h1 { font-size: clamp(40px, 5.6vw, 76px); }
+html[lang="zh-CN"] .article-body p:first-child::first-letter { font-size: inherit; float: none; padding: 0; color: inherit; font-family: inherit; }

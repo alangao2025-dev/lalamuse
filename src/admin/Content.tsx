@@ -39,7 +39,7 @@ export function Content() {
             <thead><tr><th>内容</th><th>类型</th><th className="hide-sm">栏目</th><th className="hide-sm">关联商品</th><th className="hide-sm">阅读</th><th>状态</th><th style={{ textAlign: "right" }}>操作</th></tr></thead>
             <tbody>{list.map((p) => (
               <tr key={p.id}>
-                <td><div className="pcell"><span className="t" style={{ aspectRatio: "4/3", width: 64 }}><PostCover post={p} /></span><div><div>{p.title}</div><small style={{ color: "var(--muted)" }}>{p.author} · {new Date(p.publishedAt).toLocaleDateString("zh-CN")}</small></div></div></td>
+                <td><div className="pcell"><span className="t" style={{ aspectRatio: "4/3", width: 64 }}><PostCover post={p} /></span><div><div>{p.title}</div>{p.zh?.title && <div style={{ fontSize: 12.5, color: "var(--ink-2)" }}>{p.zh.title}</div>}<small style={{ color: "var(--muted)" }}>{p.author} · {new Date(p.publishedAt).toLocaleDateString("zh-CN")}</small></div></div></td>
                 <td><span className={`tag ${p.type === "video" ? "blue" : "rose"}`}>{p.type === "video" ? "视频" : "图文"}</span></td>
                 <td className="hide-sm">{COL_CN[p.column]}</td>
                 <td className="hide-sm">{p.productIds.length} 件</td>
@@ -94,7 +94,7 @@ export function ContentEdit() {
         <div>
           <div className="panel">
             <h3>{p.type === "video" ? "视频信息" : "文章内容"}</h3>
-            <div className="f"><label>标题（英文）*</label><input className="a-input" value={p.title} onChange={(e) => up("title", e.target.value)} placeholder="e.g. 5 Ways to Style a Silk Scarf" /></div>
+            <div className="f"><label>标题（英文，前台默认展示）*</label><input className="a-input" value={p.title} onChange={(e) => up("title", e.target.value)} placeholder="e.g. 5 Ways to Style a Silk Scarf" /></div>
             <div className="f"><label>摘要</label><textarea className="a-textarea" rows={2} value={p.excerpt} onChange={(e) => up("excerpt", e.target.value)} /></div>
             {p.type === "video" && (
               <div className="f2">
@@ -106,6 +106,12 @@ export function ContentEdit() {
               <textarea className="a-textarea" rows={14} value={p.body} onChange={(e) => up("body", e.target.value)} placeholder={"段落之间空一行。\n\n## 小标题以两个井号开头\n正文内容…"} />
               <span className="hint">格式：空行分段；以「## 」开头的行显示为小标题。正式版换成可视化富文本编辑器，支持文中插图。</span>
             </div>
+          </div>
+          <div className="panel">
+            <h3>中文版本 <span style={{ fontSize: 12, color: "var(--muted)" }}>前台切换到「中文」时显示，留空则显示英文</span></h3>
+            <div className="f"><label>中文标题</label><input className="a-input" value={p.zh?.title ?? ""} onChange={(e) => up("zh", { ...p.zh, title: e.target.value })} /></div>
+            <div className="f"><label>中文摘要</label><textarea className="a-textarea" rows={2} value={p.zh?.excerpt ?? ""} onChange={(e) => up("zh", { ...p.zh, excerpt: e.target.value })} /></div>
+            <div className="f"><label>中文正文</label><textarea className="a-textarea" rows={10} value={p.zh?.body ?? ""} onChange={(e) => up("zh", { ...p.zh, body: e.target.value })} placeholder={"格式同英文正文：空行分段，「## 」开头为小标题"} /></div>
           </div>
           <div className="panel">
             <h3>关联商品 <span style={{ fontSize: 12, color: "var(--muted)" }}>已选 {p.productIds.length} 件 · 显示在内容旁边，可直接加购</span></h3>

@@ -66,7 +66,7 @@ export function Products() {
             <tbody>{list.map((p) => (
               <tr key={p.id}>
                 <td><input type="checkbox" checked={sel.includes(p.id)} onChange={() => setSel((s) => (s.includes(p.id) ? s.filter((x) => x !== p.id) : [...s, p.id]))} /></td>
-                <td><div className="pcell"><span className="t"><ProductImage p={p} /></span><div><div>{p.name}</div><small style={{ color: "var(--muted)" }}>{p.isNew && "新品 "}{p.isBest && "热卖 "}{p.images.length ? `${p.images.length} 张图` : "未上传实拍图"}</small></div></div></td>
+                <td><div className="pcell"><span className="t"><ProductImage p={p} /></span><div><div>{p.name}</div>{p.zh?.name && <div style={{ fontSize: 12.5, color: "var(--ink-2)" }}>{p.zh.name}</div>}<small style={{ color: "var(--muted)" }}>{p.isNew && "新品 "}{p.isBest && "热卖 "}{p.images.length ? `${p.images.length} 张图` : "未上传实拍图"}</small></div></div></td>
                 <td>{CAT_CN[p.category]}</td>
                 <td>{money(p.price)}{p.compareAt && <div><s style={{ color: "var(--muted)", fontSize: 12 }}>{money(p.compareAt)}</s></div>}</td>
                 <td style={{ color: p.stock < 10 ? "#B4545A" : undefined }}>{p.stock}</td>
@@ -155,9 +155,15 @@ export function ProductEdit() {
         <div>
           <div className="panel">
             <h3>基本信息</h3>
-            <div className="f"><label>商品名称（英文，前台展示）*</label><input className="a-input" value={p.name} onChange={(e) => up("name", e.target.value)} placeholder="e.g. Camille Silk Slip Dress" /></div>
+            <div className="f"><label>商品名称（英文，前台默认展示）*</label><input className="a-input" value={p.name} onChange={(e) => up("name", e.target.value)} placeholder="e.g. Camille Silk Slip Dress" /></div>
             <div className="f"><label>商品描述</label><textarea className="a-textarea" rows={4} value={p.description} onChange={(e) => up("description", e.target.value)} /></div>
             <div className="f"><label>材质与护理</label><input className="a-input" value={p.material} onChange={(e) => up("material", e.target.value)} placeholder="100% silk · Dry clean" /></div>
+          </div>
+          <div className="panel">
+            <h3>中文版本 <span style={{ fontSize: 12, color: "var(--muted)" }}>前台切换到「中文」时显示，留空则显示英文</span></h3>
+            <div className="f"><label>中文名称</label><input className="a-input" value={p.zh?.name ?? ""} onChange={(e) => up("zh", { ...p.zh, name: e.target.value })} placeholder="例如：卡米尔真丝吊带裙" /></div>
+            <div className="f"><label>中文描述</label><textarea className="a-textarea" rows={3} value={p.zh?.description ?? ""} onChange={(e) => up("zh", { ...p.zh, description: e.target.value })} /></div>
+            <div className="f"><label>中文材质与护理</label><input className="a-input" value={p.zh?.material ?? ""} onChange={(e) => up("zh", { ...p.zh, material: e.target.value })} /></div>
           </div>
           <div className="panel">
             <h3>商品图片 <span style={{ fontSize: 12, color: "var(--muted)" }}>第一张为主图，自动压缩</span></h3>

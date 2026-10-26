@@ -19,9 +19,19 @@ export default function Settings() {
         <div>
           <div className="panel">
             <h3>首页配置</h3>
-            <div className="f"><label>顶部公告条</label><input className="a-input" value={f.announcement} onChange={(e) => up("announcement", e.target.value)} /><span className="hint">留空则不显示</span></div>
-            <div className="f"><label>首屏大标题</label><input className="a-input" value={f.heroTitle} onChange={(e) => up("heroTitle", e.target.value)} /><span className="hint">逗号后的部分会以斜体花体显示</span></div>
-            <div className="f"><label>首屏副标题</label><input className="a-input" value={f.heroSubtitle} onChange={(e) => up("heroSubtitle", e.target.value)} /></div>
+            <div className="f"><label>顶部公告条（英文）</label><input className="a-input" value={f.announcement} onChange={(e) => up("announcement", e.target.value)} /><span className="hint">留空则不显示</span></div>
+            <div className="f"><label>首屏大标题（英文）</label><input className="a-input" value={f.heroTitle} onChange={(e) => up("heroTitle", e.target.value)} /><span className="hint">逗号后的部分会以斜体花体显示</span></div>
+            <div className="f"><label>首屏副标题（英文）</label><input className="a-input" value={f.heroSubtitle} onChange={(e) => up("heroSubtitle", e.target.value)} /></div>
+          </div>
+          <div className="panel">
+            <h3>首页中文文案 <span style={{ fontSize: 12, color: "var(--muted)" }}>前台切换到「中文」时显示，留空则显示英文</span></h3>
+            <div className="f"><label>中文公告条</label><input className="a-input" value={f.zh.announcement} onChange={(e) => up("zh", { ...f.zh, announcement: e.target.value })} /></div>
+            <div className="f"><label>中文首屏大标题</label><input className="a-input" value={f.zh.heroTitle} onChange={(e) => up("zh", { ...f.zh, heroTitle: e.target.value })} /><span className="hint">逗号后的部分以强调色显示</span></div>
+            <div className="f"><label>中文首屏副标题</label><input className="a-input" value={f.zh.heroSubtitle} onChange={(e) => up("zh", { ...f.zh, heroSubtitle: e.target.value })} /></div>
+            <div className="f2">
+              <div className="f"><label>中文搭配专题标题</label><input className="a-input" value={f.zh.lookTitle} onChange={(e) => up("zh", { ...f.zh, lookTitle: e.target.value })} /></div>
+              <div className="f"><label>中文搭配专题小标题</label><input className="a-input" value={f.zh.lookSubtitle} onChange={(e) => up("zh", { ...f.zh, lookSubtitle: e.target.value })} /></div>
+            </div>
           </div>
           <div className="panel">
             <h3>Shop the Look 整套搭配 <span style={{ fontSize: 12, color: "var(--muted)" }}>已选 {lookIds.length} 件</span></h3>

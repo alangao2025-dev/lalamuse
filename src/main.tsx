@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { StoreProvider } from "./store";
+import { LangProvider, useLang } from "./i18n";
 import ShopLayout from "./shop/Layout";
 import Home from "./shop/Home";
 import Shop from "./shop/Shop";
@@ -18,11 +19,13 @@ import Settings from "./admin/Settings";
 import "./shop/shop.css";
 
 function NotFound() {
-  return <div className="container empty" style={{ padding: "100px 0" }}><h3>Page not found</h3><p>The page you're looking for has moved or no longer exists.</p><Link className="btn" to="/" style={{ marginTop: 16 }}>Back home</Link></div>;
+  const { tr } = useLang();
+  return <div className="container empty" style={{ padding: "100px 0" }}><h3>{tr("Page not found", "页面不存在")}</h3><p>{tr("The page you're looking for has moved or no longer exists.", "你访问的页面已移动或不存在。")}</p><Link className="btn" to="/" style={{ marginTop: 16 }}>{tr("Back home", "返回首页")}</Link></div>;
 }
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <LangProvider>
     <StoreProvider>
       <BrowserRouter>
         <Routes>
@@ -50,5 +53,6 @@ createRoot(document.getElementById("root")!).render(
         </Routes>
       </BrowserRouter>
     </StoreProvider>
+    </LangProvider>
   </StrictMode>,
 );
