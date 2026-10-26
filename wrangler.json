@@ -1,0 +1,12 @@
+{
+  "name": "lalamuse",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [
+    { "pattern": "lalamuse.accrepo.com", "custom_domain": true }
+  ],
+  "workers_dev": true
+}
